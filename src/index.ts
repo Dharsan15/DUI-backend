@@ -13,11 +13,12 @@ const app = express();
 app.use(express.json());
 app.use(
     cors({
-      origin: "http://localhost:5173"
+      origin: "http://localhost:5173",
+      credentials: true, 
     })
   );
 
-mongoose.connect("mongodb+srv://govindharajanandhan1950:O26L1JuwPQtsMYQG@maincluster.31xxd.mongodb.net/?retryWrites=true&w=majority&appName=MainCluster/DUI")
+mongoose.connect(process.env.MONGODB_URL as string)
 
 mongoose.connection.on("open" , () => {
     console.log("connected to database");
