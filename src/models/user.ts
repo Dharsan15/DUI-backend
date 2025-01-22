@@ -1,5 +1,5 @@
 import mongoose, { Schema, Model } from "mongoose";
-import bcrypt from "bcrypt"
+import bcrypt from "bcryptjs"
 
 const accounttypes = ["Student" , "Professional" , "Organization"];
 
