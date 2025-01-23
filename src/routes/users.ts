@@ -6,7 +6,7 @@ import { check, validationResult } from "express-validator";
 import bcrypt from "bcryptjs";
 import verifyToken from "../middleware/auth.js";
 
- const  router = express.Router();
+const  router = express.Router();
 
 
 router.get("/me", verifyToken ,  async (req , res)=> {
@@ -58,13 +58,13 @@ router.post("/signup" , [
             console.log(newuser);
             
 
-            const token = jwt.sign({username : newuser.username , email : newuser.email} , process.env.JWT_SECRET_KEY as string , {
-                expiresIn: "1d",
-              });
+      const token = jwt.sign({username : newuser.username , email : newuser.email} , process.env.JWT_SECRET_KEY as string , {
+             expiresIn: "1d",
+          });
 
             res.cookie("authtoken" , token ,  {
-                httpOnly: true,
-                secure: process.env.NODE_ENV === "production",
+                // httpOnly: true,
+                // secure: process.env.NODE_ENV === "production",
                 maxAge: 86400000,
             });
 
